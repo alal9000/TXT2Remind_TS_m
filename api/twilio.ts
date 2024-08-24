@@ -6,19 +6,19 @@ const sendTwilioMessage = async (
   sendAt: string
 ) => {
   //secrets
-  const accountSid = '';
-  const authToken = '';
-  const mss = '';
+  const ACCOUNTSID = '';
+  const AUTHTOKEN = '';
+  const MESSAGINGSERVICESID = '';
 
   try {
     const response = await axios.post(
-      `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
+      `https://api.twilio.com/2010-04-01/Accounts/${ACCOUNTSID}/Messages.json`,
       new URLSearchParams({
         To: phone,
         From: '+15747013726',
         Body: message,
         SendAt: sendAt,
-        MessagingServiceSid: mss,
+        MessagingServiceSid: MESSAGINGSERVICESID,
         ScheduleType: 'fixed'
       }),
       {
@@ -26,8 +26,8 @@ const sendTwilioMessage = async (
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         auth: {
-          username: accountSid,
-          password: authToken
+          username: ACCOUNTSID,
+          password: AUTHTOKEN
         }
       }
     );
